@@ -1,7 +1,7 @@
 name: dlp
 description: A new Flutter package.
 version: 0.0.1
-author: Victor @leenorshn
+author: Victor @leenorshn<katembovictor@gmail.com>
 homepage: www.github.com/leenorshn/dlp
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
