@@ -15,7 +15,7 @@ class DlpApi {
         body: jsonEncode({'phone': phone}),
         headers: {"content-type": "application/json"});
     if (response.statusCode == 201) {
-      return response.body;
+      return jsonDecode(response.body);
     } else {
       return "Error ${response.statusCode}:${response.body}";
     }
@@ -27,7 +27,7 @@ class DlpApi {
         body: jsonEncode({'phone': phone, "code": code}),
         headers: {"content-type": "application/json"});
     if (response.statusCode == 201) {
-      return response.body;
+      return jsonDecode(response.body);
     } else {
       return "Error ${response.statusCode}:${response.body}";
     }
@@ -39,7 +39,7 @@ class DlpApi {
         headers: {"content-type": "application/json"});
 
     if (response.statusCode == 201) {
-      return response.body;
+      return jsonDecode(response.body);
     } else {
       return "Error ${response.statusCode}:${response.body}";
     }
