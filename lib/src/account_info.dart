@@ -3,47 +3,39 @@
 /// _id : "5f4d0971e1ac8a2d20090d19"
 /// owner : {"avatar":"https://avatar-url","role":"client","isVerified":false,"isAuthorized":true,"_id":"5f4d0971e1ac8a2d20090d18","name":"Mobile","phone":"+243978154329"}
 
-class AccountInfo {
+class DlpAccount {
   int balance;
   String status;
-  String id;
+  String sId;
   Owner owner;
 
-  AccountInfo({this.balance, this.status, this.id, this.owner});
+  DlpAccount({this.balance, this.status, this.sId, this.owner});
 
-  AccountInfo.fromJson(dynamic json) {
-    balance = int.parse(json["balance"]);
-    status = json["status"];
-    id = json["Id"];
-    owner = json["owner"] != null ? Owner.fromJson(json["owner"]) : null;
+  DlpAccount.fromJson(Map<String, dynamic> json) {
+    balance = json['balance'];
+    status = json['status'];
+    sId = json['_id'];
+    owner = json['owner'] != null ? new Owner.fromJson(json['owner']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["balance"] = balance;
-    map["status"] = status;
-    map["Id"] = id;
-    if (owner != null) {
-      map["owner"] = owner.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['balance'] = this.balance;
+    data['status'] = this.status;
+    data['_id'] = this.sId;
+    if (this.owner != null) {
+      data['owner'] = this.owner.toJson();
     }
-    return map;
+    return data;
   }
 }
-
-/// avatar : "https://avatar-url"
-/// role : "client"
-/// isVerified : false
-/// isAuthorized : true
-/// _id : "5f4d0971e1ac8a2d20090d18"
-/// name : "Mobile"
-/// phone : "+243978154329"
 
 class Owner {
   String avatar;
   String role;
   bool isVerified;
   bool isAuthorized;
-  String id;
+  String sId;
   String name;
   String phone;
 
@@ -52,29 +44,29 @@ class Owner {
       this.role,
       this.isVerified,
       this.isAuthorized,
-      this.id,
+      this.sId,
       this.name,
       this.phone});
 
-  Owner.fromJson(dynamic json) {
-    avatar = json["avatar"];
-    role = json["role"];
-    isVerified = json["isVerified"];
-    isAuthorized = json["isAuthorized"];
-    id = json["Id"];
-    name = json["name"];
-    phone = json["phone"];
+  Owner.fromJson(Map<String, dynamic> json) {
+    avatar = json['avatar'];
+    role = json['role'];
+    isVerified = json['isVerified'];
+    isAuthorized = json['isAuthorized'];
+    sId = json['_id'];
+    name = json['name'];
+    phone = json['phone'];
   }
 
   Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["avatar"] = avatar;
-    map["role"] = role;
-    map["isVerified"] = isVerified;
-    map["isAuthorized"] = isAuthorized;
-    map["Id"] = id;
-    map["name"] = name;
-    map["phone"] = phone;
-    return map;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['avatar'] = this.avatar;
+    data['role'] = this.role;
+    data['isVerified'] = this.isVerified;
+    data['isAuthorized'] = this.isAuthorized;
+    data['_id'] = this.sId;
+    data['name'] = this.name;
+    data['phone'] = this.phone;
+    return data;
   }
 }

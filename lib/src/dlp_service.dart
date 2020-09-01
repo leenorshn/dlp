@@ -6,8 +6,8 @@ import 'dlp_api.dart';
 /// Dlp service lib
 class DlpService {
   DlpService();
-  Future<AccountInfo> getMyAccountInfo(String phone) async {
-    AccountInfo accountInfo = await DlpApi.getAccountInfo(phone: phone);
+  Future<DlpAccount> getMyAccountInfo(String phone) async {
+    DlpAccount accountInfo = await DlpApi.getAccountInfo(phone: phone);
     print(accountInfo.toString());
     return accountInfo;
   }

@@ -45,11 +45,11 @@ class DlpApi {
     }
   }
 
-  static Future<AccountInfo> getAccountInfo({String phone}) async {
+  static Future<DlpAccount> getAccountInfo({String phone}) async {
     var response = await http.get(_baseUrl + "/api/accounts/$phone",
         headers: {"content-type": "application/json"});
     if (response.statusCode == 200) {
-      return AccountInfo.fromJson(response.body);
+      return DlpAccount.fromJson(response.body as Map<String, dynamic>);
     } else {
       return null;
     }
