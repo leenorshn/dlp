@@ -48,7 +48,6 @@ class DlpApi {
     var response = await http.get(_baseUrl + "/api/accounts/$phone",
         headers: {"content-type": "application/json"});
     if (response.statusCode == 200) {
-      print(response.body);
       return AccountInfo.fromJson(response.body);
     } else {
       return null;
