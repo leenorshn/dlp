@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:dlp/models/account_info.dart';
 import 'package:http/http.dart' as http;
+
+import 'account_info.dart';
 
 class DlpApi {
   DlpApi._();
