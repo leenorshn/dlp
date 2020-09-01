@@ -27,4 +27,48 @@ class DlpApi {
       return "Error ${response.statusCode}:${response.body}";
     }
   }
+
+  static getAccountInfo({String phone}) async {
+    var response = await http.get(_baseUrl + "/api/accounts/$phone",
+        headers: {"content-type": "application/json"});
+
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      return "Error ${response.statusCode}:${response.body}";
+    }
+  }
+
+  static signUp({
+    phone,
+    password,
+    name,
+  }) async {
+    var response = await http.post(_baseUrl + "/login",
+        body: jsonEncode({"phone": phone, "password": password}),
+        headers: {"content-type": "application/json"});
+
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      return "Error ${response.statusCode}:${response.body}";
+    }
+  }
+
+  static payer({phone, pin, amount, provider}) async {
+    var response = await http.post(_baseUrl + "/api/trans",
+        body: jsonEncode({
+          "phone": phone,
+          "pin": pin,
+          "amount": amount,
+          "provider": provider ?? "tayarifood"
+        }),
+        headers: {"content-type": "application/json"});
+
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      return "Error ${response.statusCode}:${response.body}";
+    }
+  }
 }
