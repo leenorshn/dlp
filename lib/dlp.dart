@@ -1,6 +1,7 @@
 library dlp;
 
 import 'package:dlp/dlp_service/dlp_api.dart';
+import 'package:dlp/models/account_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,10 +9,17 @@ import 'input_field.dart';
 
 /// Dlp service lib
 class DlpService {
-
   DlpService();
-  getMyAccountInfo(String phone) async {
-    DlpApi.
+  Future<AccountInfo> getMyAccountInfo(String phone) async {
+    return DlpApi.getAccountInfo(phone: phone);
+  }
+
+  verifyPhoneNumber({String phone}) async {
+    return DlpApi.verifyPhone(phone: phone);
+  }
+
+  verifySms({@required String phone, @required String code}) {
+    return DlpApi.smsPhoneVerify(phone: phone, code: code);
   }
 }
 
@@ -20,10 +28,16 @@ class DlpPaymentWidget extends StatefulWidget {
   final String phone;
   final int amount;
   final String pin;
+  final String provider;
 
-  const DlpPaymentWidget(
-      {Key key, @required this.phone, @required this.amount, this.pin})
-      : super(key: key);
+  ///All params are a must to be field
+  const DlpPaymentWidget({
+    Key key,
+    @required this.phone,
+    @required this.amount,
+    @required this.pin,
+    @required this.provider,
+  }) : super(key: key);
   @override
   _DlpPaymentWidgetState createState() => _DlpPaymentWidgetState();
 }
@@ -140,10 +154,15 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                       ),
                       color: Colors.black,
                       textColor: Colors.white,
-                      onPressed: () {
+                      onPressed: () async {
                         setState(() {
                           inProcess = true;
                         });
+                        await DlpApi.payer(
+                            phone: widget.phone,
+                            amount: widget.amount,
+                            pin: widget.pin,
+                            provider: widget.provider);
                       },
                       child: Text("Payer"),
                     ),

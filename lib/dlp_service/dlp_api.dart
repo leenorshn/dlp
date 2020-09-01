@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dlp/models/account_info.dart';
 import 'package:http/http.dart' as http;
 
 class DlpApi {
@@ -12,8 +13,23 @@ class DlpApi {
     var response = await http.post(_baseUrl + "/verify-phone",
         body: jsonEncode({'phone': phone}),
         headers: {"content-type": "application/json"});
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      return "Error ${response.statusCode}:${response.body}";
+    }
+  }
+
+  static smsPhoneVerify({String phone, String code}) async {
+    print(phone);
+    var response = await http.post(_baseUrl + "/verify-sms",
+        body: jsonEncode({'phone': phone, "code": code}),
+        headers: {"content-type": "application/json"});
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      return "Error ${response.statusCode}:${response.body}";
+    }
   }
 
   static login({phone, password}) async {
@@ -28,14 +44,13 @@ class DlpApi {
     }
   }
 
-  static getAccountInfo({String phone}) async {
+  static Future<AccountInfo> getAccountInfo({String phone}) async {
     var response = await http.get(_baseUrl + "/api/accounts/$phone",
         headers: {"content-type": "application/json"});
-
-    if (response.statusCode == 201) {
-      return response.body;
+    if (response.statusCode == 200) {
+      return AccountInfo.fromJson(response.body);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 
