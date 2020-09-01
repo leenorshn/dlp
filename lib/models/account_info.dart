@@ -12,7 +12,7 @@ class AccountInfo {
   AccountInfo({this.balance, this.status, this.id, this.owner});
 
   AccountInfo.fromJson(dynamic json) {
-    balance = int.parser(json["balance"]);
+    balance = int.parse(json["balance"]);
     status = json["status"];
     id = json["Id"];
     owner = json["owner"] != null ? Owner.fromJson(json["owner"]) : null;
