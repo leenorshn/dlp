@@ -11,7 +11,9 @@ import 'input_field.dart';
 class DlpService {
   DlpService();
   Future<AccountInfo> getMyAccountInfo(String phone) async {
-    return DlpApi.getAccountInfo(phone: phone);
+    AccountInfo accountInfo = await DlpApi.getAccountInfo(phone: phone);
+    print(accountInfo.toString());
+    return accountInfo;
   }
 
   verifyPhoneNumber({String phone}) async {
