@@ -5,20 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'input_field.dart';
 
-/*void main(){
-  runApp(Dlp());
-}
-
-class Dlp extends StatelessWidget {
-  final
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DlpPaymentWidget(phone: null, amount: null, pin: null, provider: null),
-    );
-  }
-}*/
-
 class DlpPaymentWidget extends StatefulWidget {
   final String phone;
   final int amount;
@@ -48,6 +34,7 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
           borderRadius: BorderRadius.circular(10),
         ),
         height: 340,
+        width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(16),
         margin: EdgeInsets.symmetric(
           horizontal: 24,
@@ -117,30 +104,50 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                   }
 
                   if (state is PaymentDone) {
-                    return Container(
-                      height: 56,
-                      width: 56,
-                      child: Center(
-                        child: Icon(
-                          Icons.done_all,
-                          size: 48,
-                          color: Color(0xff21ce99),
+                    return Column(
+                      children: [
+                        Container(
+                          height: 56,
+                          width: 56,
+                          child: Center(
+                            child: Icon(
+                              Icons.done_all,
+                              size: 48,
+                              color: Color(0xff21ce99),
+                            ),
+                          ),
                         ),
-                      ),
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Fermer"),
+                        ),
+                      ],
                     );
                   }
 
                   if (state is PaymentError) {
-                    return Container(
-                      height: 56,
-                      width: 56,
-                      child: Center(
-                        child: Icon(
-                          Icons.done_all,
-                          size: 48,
-                          color: Color(0xff21ce99),
+                    return Column(
+                      children: [
+                        Container(
+                          height: 56,
+                          width: 56,
+                          child: Center(
+                            child: Icon(
+                              Icons.error_outline,
+                              size: 48,
+                              color: Colors.red,
+                            ),
+                          ),
                         ),
-                      ),
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Fermer"),
+                        ),
+                      ],
                     );
                   }
                   return Column(
