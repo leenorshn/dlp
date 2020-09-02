@@ -8,14 +8,17 @@ export 'src/dlp_service.dart';
 
 class DlpWidget {
   show(BuildContext context, {phone, amount, pin, provider}) {
-    showDialog(
+    return showDialog(
       context: context,
       builder: (context) {
-        return DlpPaymentWidget(
-          phone: phone,
-          amount: amount,
-          pin: pin,
-          provider: provider,
+        return Dialog(
+          elevation: 7,
+          child: DlpPaymentWidget(
+            phone: phone,
+            amount: amount,
+            pin: pin,
+            provider: provider,
+          ),
         );
       },
     );
