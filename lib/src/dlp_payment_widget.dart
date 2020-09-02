@@ -182,7 +182,16 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                       pin = value;
                     },
                   ),
-                  Text("$_message"),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    "$_message",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 12,
+                    ),
+                  ),
                   SizedBox(
                     height: 32,
                   ),
