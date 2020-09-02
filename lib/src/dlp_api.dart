@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dlp/src/trans_result.dart';
 import 'package:http/http.dart' as http;
 
 import 'account_info.dart';
@@ -72,7 +73,7 @@ class DlpApi {
     }
   }
 
-  static payer({phone, pin, amount, provider}) async {
+  static Future<TransResult> payer({phone, pin, amount, provider}) async {
     var response = await http.post(_baseUrl + "/api/trans",
         body: jsonEncode({
           "phone": phone,
@@ -81,12 +82,12 @@ class DlpApi {
           "provider": provider ?? "tayarifood"
         }),
         headers: {"content-type": "application/json"});
-    print(response.body);
 
     if (response.statusCode == 201) {
-      return jsonDecode(response.body);
+      var transResultJson = jsonDecode(response.body);
+      return TransResult.fromJson(transResultJson);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 }

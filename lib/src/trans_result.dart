@@ -1,4 +1,4 @@
-class transResult {
+class TransResult {
   String sId;
   int amount;
   String sender;
@@ -6,7 +6,7 @@ class transResult {
   String currency;
   String provider;
 
-  transResult(
+  TransResult(
       {this.sId,
       this.amount,
       this.sender,
@@ -14,7 +14,7 @@ class transResult {
       this.currency,
       this.provider});
 
-  transResult.fromJson(Map<String, dynamic> json) {
+  TransResult.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     amount = json['amount'];
     sender = json['sender'];
