@@ -7,7 +7,10 @@ export 'src/account_info.dart';
 export 'src/dlp_service.dart';
 
 class DlpWidget {
-  static show(BuildContext context, {phone, amount, pin, provider}) {
+  static show(BuildContext context,
+      {@required String phone,
+      @required int amount,
+      @required String provider}) {
     return showDialog(
       context: context,
       builder: (context) {

@@ -22,7 +22,8 @@ class DlpPaymentWidget extends StatefulWidget {
 }
 
 class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
-  String pin;
+  String pin = "";
+  String _message = "";
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PaymentBloc>(
@@ -181,6 +182,7 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                       pin = value;
                     },
                   ),
+                  Text("$_message"),
                   SizedBox(
                     height: 32,
                   ),
@@ -192,17 +194,23 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                     color: Colors.black,
                     textColor: Colors.white,
                     onPressed: () {
-                      BlocProvider.of<PaymentBloc>(context)
-                        ..add(
-                          AddPaymentEvent(
-                            PaymentInput(
-                              phone: widget.phone,
-                              pin: pin,
-                              amount: widget.amount,
-                              provider: widget.provider,
+                      if (pin.length != 4) {
+                        setState(() {
+                          _message = "error verifier votre pin";
+                        });
+                      } else {
+                        BlocProvider.of<PaymentBloc>(context)
+                          ..add(
+                            AddPaymentEvent(
+                              PaymentInput(
+                                phone: widget.phone,
+                                pin: pin,
+                                amount: widget.amount,
+                                provider: widget.provider,
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                      }
                     },
                     child: Text("Payer"),
                   ),
