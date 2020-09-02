@@ -112,29 +112,37 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                 ),
                 BlocBuilder<PaymentBloc, PaymentState>(
                     builder: (context, state) {
-                      if(state is PaymentInProcess){
-                        return CircularProgressIndicator();
-                      }
+                  if (state is PaymentInProcess) {
+                    return CircularProgressIndicator();
+                  }
 
-                      if(state is PaymentDone){
-                        return Container(
-                          height: 56,
-                          width: 56,
-                          child: Center(
-                            child: Icon(Icons.done_all,size: 48,color: Color(0xff21ce99),),
-                          ),
-                        );
-                      }
+                  if (state is PaymentDone) {
+                    return Container(
+                      height: 56,
+                      width: 56,
+                      child: Center(
+                        child: Icon(
+                          Icons.done_all,
+                          size: 48,
+                          color: Color(0xff21ce99),
+                        ),
+                      ),
+                    );
+                  }
 
-                      if(state is PaymentError){
-                        return Container(
-                          height: 56,
-                          width: 56,
-                          child: Center(
-                            child: Icon(Icons.done_all,size: 48,color: Color(0xff21ce99),),
-                          ),
-                        );
-                      }
+                  if (state is PaymentError) {
+                    return Container(
+                      height: 56,
+                      width: 56,
+                      child: Center(
+                        child: Icon(
+                          Icons.done_all,
+                          size: 48,
+                          color: Color(0xff21ce99),
+                        ),
+                      ),
+                    );
+                  }
                   return Column(
                     children: [
                       Align(
