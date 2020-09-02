@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'dlp_api.dart';
 import 'input_field.dart';
 
+enum PaymentStep { STEP_INITIAL, STEP_PROCESSING, STEP_DONE, STEP_ERROR }
+
 class DlpPaymentWidget extends StatefulWidget {
   final String phone;
   final int amount;
@@ -23,11 +25,14 @@ class DlpPaymentWidget extends StatefulWidget {
 
 class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
   bool inProcess = false;
+  PaymentStep _paymentStep = PaymentStep.STEP_INITIAL;
 
   @override
   void initState() {
     super.initState();
   }
+
+  _buildBody() {}
 
   @override
   Widget build(BuildContext context) {
