@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dlp/dlp.dart';
+import 'package:dlp/src/dlp_api.dart';
 import 'package:meta/meta.dart';
 
 part 'payment_event.dart';
@@ -13,6 +15,15 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   Stream<PaymentState> mapEventToState(
     PaymentEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is LoadPaymentEvent) {}
+
+    if (event is AddPaymentEvent) {
+      await DlpApi.payer(
+        phone: event.paymentInput.phone,
+        provider: event.paymentInput.provider,
+        pin: event.paymentInput.pin,
+        amount: event.paymentInput.amount,
+      );
+    }
   }
 }

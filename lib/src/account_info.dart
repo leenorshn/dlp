@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 /// balance : 0
 /// status : "Active"
 /// _id : "5f4d0971e1ac8a2d20090d19"
@@ -69,4 +71,16 @@ class Owner {
     data['phone'] = this.phone;
     return data;
   }
+}
+
+class PaymentInput {
+  String phone;
+  String pin;
+  String provider;
+  int amount;
+  PaymentInput(
+      {@required this.phone,
+      @required this.pin,
+      @required this.amount,
+      @required this.provider});
 }

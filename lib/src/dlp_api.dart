@@ -81,9 +81,10 @@ class DlpApi {
           "provider": provider ?? "tayarifood"
         }),
         headers: {"content-type": "application/json"});
+    print(response.body);
 
     if (response.statusCode == 201) {
-      return response.body;
+      return jsonDecode(response.body);
     } else {
       return "Error ${response.statusCode}:${response.body}";
     }

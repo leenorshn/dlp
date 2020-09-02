@@ -4,3 +4,9 @@ part of 'payment_bloc.dart';
 abstract class PaymentState {}
 
 class PaymentInitial extends PaymentState {}
+
+class PaymentDone extends PaymentState {}
+
+class PaymentInProcess extends PaymentState {}
+
+class PaymentError extends PaymentState {}
