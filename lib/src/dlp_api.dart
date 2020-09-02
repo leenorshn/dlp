@@ -75,9 +75,9 @@ class DlpApi {
   static payer({phone, pin, amount, provider}) async {
     var response = await http.post(_baseUrl + "/api/trans",
         body: jsonEncode({
-          "phone": phone,
-          "pin": pin,
-          "amount": amount,
+          "phone": "+243978154329",
+          "pin": "1234",
+          "amount": 400,
           "provider": provider ?? "tayarifood"
         }),
         headers: {"content-type": "application/json"});
