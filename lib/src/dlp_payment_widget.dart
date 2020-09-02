@@ -114,6 +114,20 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      "Paiement Reussi",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff21ce99),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
                     RaisedButton(
                       onPressed: () {
                         Navigator.of(context).pop();
