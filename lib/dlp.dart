@@ -7,7 +7,7 @@ export 'src/account_info.dart';
 export 'src/dlp_service.dart';
 
 class DlpWidget {
-  show(BuildContext context, {phone, amount, pin, provider}) {
+  static show(BuildContext context, {phone, amount, pin, provider}) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -16,7 +16,6 @@ class DlpWidget {
           child: DlpPaymentWidget(
             phone: phone,
             amount: amount,
-            pin: pin,
             provider: provider,
           ),
         );
