@@ -127,7 +127,7 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
                       ),
                     ),
                     SizedBox(
-                      height: 24,
+                      height: 18,
                     ),
                     RaisedButton(
                       onPressed: () {
