@@ -8,8 +8,17 @@ class DlpService {
   DlpService();
   Future<DlpAccount> getMyAccountInfo(String phone) async {
     DlpAccount accountInfo = await DlpApi.getAccountInfo(phone: phone);
-    print(accountInfo.toString());
     return accountInfo;
+  }
+
+  Future signUp({phone, name, pin, address}) async {
+    var data = await DlpApi.signUp(
+        pin: pin, phone: phone, address: address, name: name);
+    if (data != null) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   verifyPhoneNumber({String phone}) async {

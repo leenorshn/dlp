@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dlp/src/trans_result.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 import 'account_info.dart';
@@ -18,7 +19,7 @@ class DlpApi {
     if (response.statusCode == 201) {
       return jsonDecode(response.body);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 
@@ -30,7 +31,7 @@ class DlpApi {
     if (response.statusCode == 201) {
       return jsonDecode(response.body);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 
@@ -42,7 +43,7 @@ class DlpApi {
     if (response.statusCode == 201) {
       return jsonDecode(response.body);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 
@@ -57,19 +58,24 @@ class DlpApi {
     }
   }
 
-  static signUp({
-    phone,
-    password,
-    name,
-  }) async {
-    var response = await http.post(_baseUrl + "/login",
-        body: jsonEncode({"phone": phone, "password": password}),
+  static signUp(
+      {@required String phone,
+      @required String pin,
+      @required String name,
+      @required String address}) async {
+    var response = await http.post(_baseUrl + "/signup",
+        body: jsonEncode({
+          "phone": phone,
+          "pin": pin,
+          "name": name,
+          "address": address,
+        }),
         headers: {"content-type": "application/json"});
 
     if (response.statusCode == 201) {
-      return response.body;
+      return jsonDecode(response.body);
     } else {
-      return "Error ${response.statusCode}:${response.body}";
+      return null;
     }
   }
 
