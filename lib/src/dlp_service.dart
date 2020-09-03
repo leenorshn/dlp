@@ -7,7 +7,9 @@ import 'models/account_info.dart';
 class DlpService {
   DlpService();
   Future<DlpAccount> getMyAccountInfo(String phone) async {
+    print("Phone===> $phone");
     DlpAccount accountInfo = await DlpApi.getAccountInfo(phone: phone);
+    print(accountInfo.toString());
     return accountInfo;
   }
 
