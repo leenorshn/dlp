@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dlp/dlp.dart';
 import 'package:dlp/src/dlp_api.dart';
 import 'package:dlp/src/trans_result.dart';
 import 'package:meta/meta.dart';
+
+import '../account_info.dart';
 
 part 'payment_event.dart';
 part 'payment_state.dart';
