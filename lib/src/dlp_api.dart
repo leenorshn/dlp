@@ -4,7 +4,7 @@ import 'package:dlp/src/trans_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-import 'account_info.dart';
+import 'models/account_info.dart';
 
 class DlpApi {
   DlpApi._();

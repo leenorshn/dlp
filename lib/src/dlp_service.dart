@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'account_info.dart';
 import 'dlp_api.dart';
+import 'models/account_info.dart';
 
 /// Dlp service lib
 class DlpService {

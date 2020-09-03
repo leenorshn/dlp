@@ -2,8 +2,8 @@ import 'package:dlp/src/bloc/payment_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'account_info.dart';
 import 'input_field.dart';
+import 'models/account_info.dart';
 
 class DlpPaymentWidget extends StatefulWidget {
   final String phone;
