@@ -71,7 +71,7 @@ class DlpApi {
           "address": address,
         }),
         headers: {"content-type": "application/json"});
-
+    print(response.body.toString());
     if (response.statusCode == 201) {
       var data = jsonDecode(response.body);
       return DlpAccount.fromJson(data);
