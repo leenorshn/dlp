@@ -163,3 +163,63 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
     return textFields;
   }
 }
+
+class InputField extends StatelessWidget {
+  final String label;
+  final bool isPassword;
+  final double sise;
+  final String hint;
+  final Widget prefixIcon;
+  final TextEditingController controller;
+  final Function(String) validator;
+  final Function(String) onChanged;
+  final TextInputType keyBoardType;
+
+  const InputField({
+    Key key,
+    this.label,
+    this.sise,
+    this.isPassword,
+    this.onChanged,
+    this.hint,
+    this.keyBoardType,
+    this.prefixIcon,
+    this.controller,
+    this.validator,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: sise,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        TextFormField(
+          obscureText: isPassword,
+          controller: controller,
+          validator: validator,
+          keyboardType: keyBoardType,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            hintText: hint,
+            fillColor: Colors.blueGrey[50],
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey[200]),
+            ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey[200]),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
