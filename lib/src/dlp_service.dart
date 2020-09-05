@@ -15,11 +15,16 @@ class DlpService {
 
   Future signUp({phone, name, pin, address}) async {
     var data = await DlpApi.signUp(
-        pin: pin, phone: phone, address: address, name: name);
+      pin: "1289",
+      phone: "+243825342047",
+      address: "Butembo",
+      name: "Victor-test",
+    );
     if (data != null) {
-      return 1;
+      print(data.toString());
+      return data;
     } else {
-      return 0;
+      return null;
     }
   }
 
