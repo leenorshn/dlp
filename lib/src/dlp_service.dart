@@ -15,10 +15,10 @@ class DlpService {
 
   Future<DlpAccount> signUp({phone, name, pin, address}) async {
     DlpAccount data = await DlpApi.signUp(
-      pin: "1289",
-      phone: "+243825342047",
-      address: "Butembo",
-      name: "Victor-test",
+      pin: pin,
+      phone: phone,
+      address: address,
+      name: name,
     );
     if (data != null) {
       print("*****>>>> " + data.toString());
