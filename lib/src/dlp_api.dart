@@ -58,7 +58,7 @@ class DlpApi {
     }
   }
 
-  static signUp(
+  static Future<DlpAccount> signUp(
       {@required String phone,
       @required String pin,
       @required String name,
@@ -73,7 +73,8 @@ class DlpApi {
         headers: {"content-type": "application/json"});
 
     if (response.statusCode == 201) {
-      return jsonDecode(response.body);
+      var data = jsonDecode(response.body);
+      return DlpAccount.fromJson(data);
     } else {
       return null;
     }

@@ -13,8 +13,8 @@ class DlpService {
     return accountInfo;
   }
 
-  Future signUp({phone, name, pin, address}) async {
-    var data = await DlpApi.signUp(
+  Future<DlpAccount> signUp({phone, name, pin, address}) async {
+    DlpAccount data = await DlpApi.signUp(
       pin: "1289",
       phone: "+243825342047",
       address: "Butembo",
