@@ -20,6 +20,7 @@ class DlpService {
       address: address,
       name: name,
     );
+    print(pin + phone + address + name);
     if (data != null) {
       print("*****>>>> " + data.toString());
       return data;
