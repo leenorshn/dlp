@@ -93,7 +93,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                   height: 16,
                 ),
                 Text(
-                  "Paiement Reussi",
+                  "Erreur de creation de compte",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
