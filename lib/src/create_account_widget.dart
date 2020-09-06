@@ -34,13 +34,49 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
         child:
             BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
           if (state is AccountProcessingState) {
-            return Center(
-              child: CircularProgressIndicator(),
+            return Container(
+              child: Column(
+                children: [
+                  Text(
+                    "Creation de compte",
+                    style: TextStyle(
+                      color: Color(0xff21ce99),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32,
+                  ),
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  Text(
+                    "Encour de traitement ...",
+                    style: TextStyle(
+                      color: Color(0xff21ce99),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
             );
           }
           if (state is AccountCreatedDoneState) {
             return Column(
               children: [
+                Text(
+                  "Creation de compte",
+                  style: TextStyle(
+                    color: Color(0xff21ce99),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(
+                  height: 32,
+                ),
                 Container(
                   height: 56,
                   width: 56,
@@ -78,6 +114,17 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
           if (state is AccountCreatedFailureState) {
             return Column(
               children: [
+                Text(
+                  "Creation de compte",
+                  style: TextStyle(
+                    color: Color(0xff21ce99),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(
+                  height: 32,
+                ),
                 Container(
                   height: 64,
                   width: 64,
