@@ -35,6 +35,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
             BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
           if (state is AccountProcessingState) {
             return Container(
+              height: 260,
               child: Column(
                 children: [
                   Text(
@@ -50,6 +51,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                   ),
                   Center(
                     child: CircularProgressIndicator(),
+                  ),
+                  SizedBox(
+                    height: 32,
                   ),
                   Text(
                     "Encour de traitement ...",
