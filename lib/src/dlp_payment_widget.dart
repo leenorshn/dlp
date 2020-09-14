@@ -10,6 +10,10 @@ class DlpPaymentWidget extends StatefulWidget {
   final int amount;
   final String provider;
 
+  static bool getStatus({bool status}) {
+    return status;
+  }
+
   ///All params are a must to be field
   const DlpPaymentWidget({
     Key key,
@@ -24,6 +28,7 @@ class DlpPaymentWidget extends StatefulWidget {
 class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
   String pin = "";
   String _message = "";
+  bool _status = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PaymentBloc>(
@@ -102,6 +107,7 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
               }
 
               if (state is PaymentDone) {
+                DlpPaymentWidget.getStatus(status: true);
                 return Column(
                   children: [
                     Container(
@@ -140,6 +146,7 @@ class _DlpPaymentWidgetState extends State<DlpPaymentWidget> {
               }
 
               if (state is PaymentError) {
+                DlpPaymentWidget.getStatus(status: true);
                 return Column(
                   children: [
                     Container(
