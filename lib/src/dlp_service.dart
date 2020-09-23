@@ -1,3 +1,4 @@
+import 'package:dlp/src/models/trans_result.dart';
 import 'package:flutter/material.dart';
 
 import 'dlp_api.dart';
@@ -7,9 +8,7 @@ import 'models/account_info.dart';
 class DlpService {
   DlpService();
   Future<DlpAccount> getMyAccountInfo(String phone) async {
-    print("Phone===> $phone");
     DlpAccount accountInfo = await DlpApi.getAccountInfo(phone: phone);
-    print(accountInfo.toString());
     return accountInfo;
   }
 
@@ -26,6 +25,24 @@ class DlpService {
     } else {
       return null;
     }
+  }
+
+  Future<TransResult> payer(
+      {String pin,
+      String provider,
+      double amount,
+      String currency,
+      String fromPhone,
+      toPhone}) async {
+    TransResult transResult = await DlpApi.payer(
+        pin: pin,
+        provider: provider,
+        amount: amount,
+        currency: currency,
+        fromPhone: fromPhone,
+        toPhone: toPhone);
+
+    return transResult;
   }
 
   verifyPhoneNumber({String phone}) async {

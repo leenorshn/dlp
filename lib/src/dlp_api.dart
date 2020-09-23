@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-import 'file:///C:/Users/leenor/AndroidStudioProjects/dlp/lib/src/models/trans_result.dart';
-
 import 'models/account_info.dart';
+import 'models/trans_result.dart';
 
 class DlpApi {
   DlpApi._();
