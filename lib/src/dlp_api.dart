@@ -68,7 +68,9 @@ class DlpApi {
           "phone": phone,
           "pin": pin,
           "name": name,
+          "role": "client",
           "address": address,
+          "isVerified": true,
         }),
         headers: {"content-type": "application/json"});
 
