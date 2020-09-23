@@ -61,7 +61,6 @@ class DlpApi {
       {@required String phone,
       @required String pin,
       @required String name,
-      @required String role,
       @required String address}) async {
     var response = await http.post(_baseUrl + "/signup",
         body: jsonEncode({
