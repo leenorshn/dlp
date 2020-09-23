@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dlp/src/dlp_api.dart';
-import 'package:dlp/src/trans_result.dart';
 import 'package:meta/meta.dart';
+
+import 'file:///C:/Users/leenor/AndroidStudioProjects/dlp/lib/src/models/trans_result.dart';
 
 import '../models/account_info.dart';
 

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:dlp/src/trans_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+
+import 'file:///C:/Users/leenor/AndroidStudioProjects/dlp/lib/src/models/trans_result.dart';
 
 import 'models/account_info.dart';
 
@@ -12,7 +13,6 @@ class DlpApi {
   static String _baseUrl = "http://192.168.43.58:4000";
 
   static verifyPhone({phone}) async {
-    print(phone);
     var response = await http.post(_baseUrl + "/verify-phone",
         body: jsonEncode({'phone': phone}),
         headers: {"content-type": "application/json"});
@@ -24,7 +24,6 @@ class DlpApi {
   }
 
   static smsPhoneVerify({String phone, String code}) async {
-    print(phone);
     var response = await http.post(_baseUrl + "/verify-sms",
         body: jsonEncode({'phone': phone, "code": code}),
         headers: {"content-type": "application/json"});
@@ -71,10 +70,9 @@ class DlpApi {
           "address": address,
         }),
         headers: {"content-type": "application/json"});
-    print(response.body.toString());
+
     if (response.statusCode == 201) {
       var dataJson = jsonDecode(response.body);
-      print(dataJson);
       return DlpAccount.fromJson(dataJson);
     } else {
       return null;
