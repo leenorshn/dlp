@@ -61,6 +61,7 @@ class DlpApi {
       {@required String phone,
       @required String pin,
       @required String name,
+      @required String role,
       @required String address}) async {
     var response = await http.post(_baseUrl + "/signup",
         body: jsonEncode({
@@ -79,13 +80,17 @@ class DlpApi {
     }
   }
 
-  static Future<TransResult> payer({phone, pin, amount, provider}) async {
+  static Future<TransResult> payer(
+      {fromPhone, toPhone, currency, pin, amount, provider}) async {
     var response = await http.post(_baseUrl + "/api/trans",
         body: jsonEncode({
-          "phone": phone,
+          "fromPhone": fromPhone,
+          "toPhone": toPhone,
+          "typeTrans": "Payment",
           "pin": pin,
+          "currency": currency,
           "amount": amount,
-          "provider": provider ?? "tayarifood"
+          "provider": provider ?? "dlp"
         }),
         headers: {"content-type": "application/json"});
 
