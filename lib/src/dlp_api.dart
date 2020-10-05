@@ -68,6 +68,7 @@ class DlpApi {
           "name": name,
           "role": "client",
           "address": address,
+          "email": "default",
           "isVerified": true,
         }),
         headers: {"content-type": "application/json"});
