@@ -9,7 +9,7 @@ import 'models/trans_result.dart';
 class DlpApi {
   DlpApi._();
 
-  static String _baseUrl = "http://192.168.43.58:4000";
+  static String _baseUrl = "https://dlp-service-5qvdijzm7q-ew.a.run.app";
 
   static verifyPhone({phone}) async {
     var response = await http.post(_baseUrl + "/verify-phone",
