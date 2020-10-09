@@ -30,17 +30,18 @@ class DlpService {
   Future<TransResult> payer(
       {String pin,
       String provider,
-      double amount,
+      int amount,
       String currency,
       String fromPhone,
       toPhone}) async {
     TransResult transResult = await DlpApi.payer(
-        pin: pin,
-        provider: provider,
-        amount: amount,
-        currency: currency,
-        fromPhone: fromPhone,
-        toPhone: toPhone);
+      pin: pin,
+      provider: provider,
+      amount: amount,
+      currency: currency,
+      fromPhone: fromPhone,
+      toPhone: toPhone,
+    );
 
     return transResult;
   }
