@@ -27,6 +27,10 @@ class DlpService {
     }
   }
 
+  changePin({@required String phone, @required String pin, @required newpin}) {
+    return DlpApi.changePin(phone: phone, newpin: newpin, pin: pin);
+  }
+
   Future<TransResult> payer(
       {String pin,
       String provider,
