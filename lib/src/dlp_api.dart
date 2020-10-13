@@ -45,6 +45,18 @@ class DlpApi {
     }
   }
 
+  static changePin({phone, pin, newpin}) async {
+    var response = await http.post(_baseUrl + "/api/users/changepin",
+        body: jsonEncode({"phone": phone, "pin": pin, "newpin": newpin}),
+        headers: {"content-type": "application/json"});
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      return null;
+    }
+  }
+
   static Future<DlpAccount> getAccountInfo({String phone}) async {
     var response = await http.get(_baseUrl + "/api/accounts/$phone",
         headers: {"content-type": "application/json"});
